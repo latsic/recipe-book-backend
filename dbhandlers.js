@@ -2,7 +2,8 @@ const MongoClient = require('mongodb').MongoClient;
 const MongoServer = require('mongodb').Server;
 const {parse} = require("url");
 
-const dbUrl = "mongodb://80.209.237.186:27017";
+//const dbUrl = "mongodb://80.209.237.186:27017";
+const dbUrl = "mongodb://127.0.0.1:27017";
 const dbName = "myDb"
 const recipeBook = "recipe-book";
 const shoppingList = "shopping-list";
