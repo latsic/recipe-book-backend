@@ -16,6 +16,8 @@ let commonHandlers = new CommonHandlers();
 
 let server = createServer((request, response) => {
 
+  console.log("got request, url", request.url);
+
   let handlerFunc = getHandlerFunction(request);
   handlerFunc(request)
     .then(({status = 200, type = "text/plain", body = ""}) => {
@@ -46,7 +48,8 @@ function writeResponse(response, status, type, body) {
   response.writeHead(
     status,
     "noSpecialReason",
-    {"Content-Type": type}
+    {"Content-Type": type,
+     "Access-Control-Allow-Origin": "*"}
   );
 
   // In case the source of our body is a readable stream
