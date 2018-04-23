@@ -145,7 +145,7 @@ function createDir(path) {
   }
   catch(error) {
     if (error.code != "ENOENT") {
-        throw(new Error(`Could not stat path ${file} ${error}`));
+        throw(new Error(`Could not stat path ${path}, failed with ${error}`));
     }
   }
 }
