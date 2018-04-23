@@ -90,7 +90,7 @@ function getHandlerFunction(request) {
       return fileHandlers.handlerPut.bind(fileHandlers);
     }
     else if(request.method == "DELETE") {
-      return fileHandlers.handlerPut.bind(fileHandlers);
+      return fileHandlers.handlerDelete.bind(fileHandlers);
     }
   }
   else {
@@ -101,7 +101,7 @@ function getHandlerFunction(request) {
       return dbHandlers.handlerPut.bind(dbHandlers);
     }
     else if(request.method == "DELETE") {
-      return dbHandlers.handlerPut.bind(dbHandlers);
+      return dbHandlers.handlerDelete.bind(dbHandlers);
     }
   }
 
