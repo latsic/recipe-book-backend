@@ -140,7 +140,7 @@ async function throwIfResourceNotValid(resourcePath, mustExist) {
 function createDir(path) {
   let fileStats;
   try {
-    fileStats = statSync(resourcePath);
+    fileStats = statSync(path);
     mkdirSync(path);
   }
   catch(error) {
