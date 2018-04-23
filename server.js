@@ -17,6 +17,7 @@ let commonHandlers = new CommonHandlers();
 let server = createServer((request, response) => {
 
   console.log("got request, url", request.url);
+  console.log("request method: ", request.method);
 
   let handlerFunc = getHandlerFunction(request);
   handlerFunc(request)
@@ -71,6 +72,10 @@ catch(error) {
 }
 
 function getHandlerFunction(request) {
+
+  if(request.method == "OPTIONS") {
+    return commonHandlers.handlerOptions.bind(this); 
+  }
 
   if(mode == "file") {
 

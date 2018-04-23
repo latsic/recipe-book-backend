@@ -7,4 +7,12 @@ module.exports = class CommonHandlers {
       body: `Method ${request.method} not allowed.`
     };
   }
+
+  async handlerOptions(request) {
+    return {
+      status: 200,
+      body: "",
+      type: "text/plain"
+    };
+  }
 }
