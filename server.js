@@ -89,12 +89,18 @@ function getHandlerFunction(request) {
     else if(request.method == "PUT") {
       return fileHandlers.handlerPut.bind(fileHandlers);
     }
+    else if(request.method == "DELETE") {
+      return fileHandlers.handlerPut.bind(fileHandlers);
+    }
   }
   else {
     if(request.method == "GET") {
       return dbHandlers.handlerGet.bind(dbHandlers);
     }
     else if(request.method == "PUT") {
+      return dbHandlers.handlerPut.bind(dbHandlers);
+    }
+    else if(request.method == "DELETE") {
       return dbHandlers.handlerPut.bind(dbHandlers);
     }
   }

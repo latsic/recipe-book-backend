@@ -50,6 +50,20 @@ module.exports =  class FileHandlers {
       body: `Method ${request.method} not found.`
     };
   }
+
+  async handlerDelete(request) {
+    let filePath = resourcePath(request.url, this.baseDir);
+    let exists = await throwIfResourceNotValid(filePath, false);
+
+    if(exists) {
+      await unlink(filePath);
+    }
+
+    return {
+      status: 204
+    };
+  }
+
 }
 
 

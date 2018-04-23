@@ -60,11 +60,8 @@ module.exports = class DbHandlers {
     let client = await this.getClient();
     let colName = collectionName(request.url);
 
-    console.log("hmm1");
-
+    
     await client.db(dbName).collection(colName).remove({});
-
-    console.log("hmm1");
 
     let jsonData = await getBodyData(request);
     let data = JSON.parse(jsonData);
@@ -78,8 +75,17 @@ module.exports = class DbHandlers {
 
     return {status: 204};
   }
-}
 
+  async handlerDelete(request) {
+
+    let client = await this.getClient();
+    let colName = collectionName(request.url);
+
+    await client.db(dbName).collection(colName).remove({});
+
+    return {status: 204};
+  }
+}
 
 function getBodyData(request) {
 
