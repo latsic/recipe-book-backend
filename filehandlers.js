@@ -7,6 +7,9 @@ const {createReadStream, createWriteStream, mkdirSync, statSync} = require("fs")
 module.exports =  class FileHandlers {
 
   constructor(baseDir) {
+    
+    console.log("Constructor FileHandlers called");
+    
     this.baseDir = baseDir;
 
     const dataPath = this.baseDir + sep + "data";
