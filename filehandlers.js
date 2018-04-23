@@ -2,12 +2,15 @@
 const {parse} = require("url");
 const {resolve, sep} = require("path");
 const {stat, unlink} = require("mz/fs");
-const {createReadStream, createWriteStream} = require("fs");
+const {createReadStream, createWriteStream, mkdirSync, statSync} = require("fs");
 
 module.exports =  class FileHandlers {
 
   constructor(baseDir) {
     this.baseDir = baseDir;
+
+    const dataPath = this.baseDir + sep + "data";
+    createDir(dataPath);
   }
 
   async handlerGet(request) {
@@ -63,7 +66,6 @@ module.exports =  class FileHandlers {
       status: 204
     };
   }
-
 }
 
 
@@ -133,5 +135,17 @@ async function throwIfResourceNotValid(resourcePath, mustExist) {
 
   // file exists;
   return true;
+}
 
+function createDir(path) {
+  let fileStats;
+  try {
+    fileStats = statSync(resourcePath);
+    mkdirSync(path);
+  }
+  catch(error) {
+    if (error.code != "ENOENT") {
+        throw(new Error(`Could not stat path ${file} ${error}`));
+    }
+  }
 }
