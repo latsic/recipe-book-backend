@@ -142,6 +142,7 @@ function createDir(path) {
   try {
     fileStats = statSync(path);
     mkdirSync(path);
+    console.log(`Created path ${path} successfully`)
   }
   catch(error) {
     if (error.code != "ENOENT") {
